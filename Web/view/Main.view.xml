@@ -4,92 +4,128 @@
 	<Page 
 		title="Password management"
 		id="mainPage">
-		<VBox>
-			<f:SimpleForm id="userForm1"
-                    editable="true"
-			              layout="ResponsiveGridLayout"
-                    title="Reset/Lock/Unlock Password"
-			              labelSpanXL="4"
-			              labelSpanL="4"
-			              labelSpanM="12"
-			              labelSpanS="12"
-			              adjustLabelSpan="false"
-			              emptySpanXL="0"
-			              emptySpanL="0"
-			              emptySpanM="0"
-			              emptySpanS="0"
-			              columnsXL="2"
-			              columnsL="2"
-			              columnsM="1"
-			              singleContainerFullSize="false">
-				<f:content>
-              <Label text="Reset" />
-              <Button text="Reset"
-                      press="onReset"
-                      ariaDescribedBy="defaultButtonDescription genericButtonDescription">
-                <layoutData>
-                  <l:GridData span="XL2 L3 M3 S4" />
-                </layoutData>
-              </Button>
-              <Label text="Lock" />
-              <Button text="Lock"
-                      press="onLock"
-                      ariaDescribedBy="defaultButtonDescription genericButtonDescription">
-                <layoutData>
-                  <l:GridData span="XL2 L3 M3 S4" />
-                </layoutData>
-              </Button>
-              <Button text="Unlock"
-                      press="onUnlock"
-                      ariaDescribedBy="defaultButtonDescription genericButtonDescription">
-                <layoutData>
-                  <l:GridData span="XL2 L3 M3 S4" />
-                </layoutData>
-              </Button>
-				</f:content>
-			</f:SimpleForm>
-			<f:SimpleForm id="userForm2"
-                    editable="true"
-			              layout="ResponsiveGridLayout"
-			              title="Change Password"
-			              labelSpanXL="4"
-			              labelSpanL="4"
-			              labelSpanM="12"
-			              labelSpanS="12"
-			              adjustLabelSpan="false"
-			              emptySpanXL="0"
-			              emptySpanL="0"
-			              emptySpanM="0"
-			              emptySpanS="0"
-			              columnsXL="2"
-			              columnsL="2"
-			              columnsM="1"
-			              singleContainerFullSize="false">
-				<f:content>
-              <Label text="Old password" />
-              <Input value="" type="Text" submit=""
-                editable="true" maxLength="8">
-              </Input>
-              <Label text="New password" />
-              <Input value="" type="Text" submit=""
-                editable="true" maxLength="8">
-              </Input>
-              <Label text="Confirm password" />
-              <Input value="" type="Text" submit=""
-                editable="true" maxLength="8">
-              </Input>
-              <Label text="" />
-              <Button text="Change"
-                      press="onChangePwd"
-                      ariaDescribedBy="defaultButtonDescription genericButtonDescription">
-                <layoutData>
-                  <l:GridData span="XL2 L3 M3 S4" />
-                </layoutData>
-              </Button>
-				</f:content>
-			</f:SimpleForm>
-		</VBox>
-
+			<ObjectHeader
+					id="objectHeader"
+					title="Please choose your action"
+          intro="Note: This area and the following Title can be removed, or you can place some introduction in here."
+					backgroundDesign="Translucent">
+			</ObjectHeader>
+			<IconTabBar id="iconTabBar"
+						expanded="true"
+						class="sapUiNoContentPadding">
+				<items>
+					<IconTabFilter icon="sap-icon://reset" key="info" text="Reset" tooltip="Reset password.">
+			      <f:SimpleForm id="userForm1"
+                          editable="true"
+			                    layout="ResponsiveGridLayout"
+                          title="Reset password"
+			                    labelSpanXL="4"
+			                    labelSpanL="4"
+			                    labelSpanM="12"
+			                    labelSpanS="12"
+			                    adjustLabelSpan="false"
+			                    emptySpanXL="0"
+			                    emptySpanL="0"
+			                    emptySpanM="0"
+			                    emptySpanS="0"
+			                    columnsXL="2"
+			                    columnsL="2"
+			                    columnsM="1"
+			                    singleContainerFullSize="false">
+				      <f:content>
+                    <Label text="" />
+                    <Button text="Reset"
+                            press="onReset"
+                            ariaDescribedBy="defaultButtonDescription genericButtonDescription">
+                      <layoutData>
+                        <l:GridData span="XL2 L3 M3 S4" />
+                      </layoutData>
+                    </Button>
+				      </f:content>
+			      </f:SimpleForm>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://private" key="info" text="Lock/Unlock" tooltip="Lock or Unlock password.">
+			      <f:SimpleForm id="userForm2"
+                          editable="true"
+			                    layout="ResponsiveGridLayout"
+                          title="Lock/Unlock password"
+			                    labelSpanXL="4"
+			                    labelSpanL="4"
+			                    labelSpanM="12"
+			                    labelSpanS="12"
+			                    adjustLabelSpan="false"
+			                    emptySpanXL="0"
+			                    emptySpanL="0"
+			                    emptySpanM="0"
+			                    emptySpanS="0"
+			                    columnsXL="2"
+			                    columnsL="2"
+			                    columnsM="1"
+			                    singleContainerFullSize="false">
+				      <f:content>
+                    <Label text="" />
+                    <Button text="Lock"
+                            press="onLock"
+                            ariaDescribedBy="defaultButtonDescription genericButtonDescription">
+                      <layoutData>
+                        <l:GridData span="XL2 L3 M3 S4" />
+                      </layoutData>
+                    </Button>
+                    <Label text="" />
+                    <Button text="Unlock"
+                            press="onUnlock"
+                            ariaDescribedBy="defaultButtonDescription genericButtonDescription">
+                      <layoutData>
+                        <l:GridData span="XL2 L3 M3 S4" />
+                      </layoutData>
+                    </Button>
+				      </f:content>
+			      </f:SimpleForm>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://request" key="statistics" text="Change" tooltip="Change password.">
+			      <f:SimpleForm id="userForm3"
+                          editable="true"
+			                    layout="ResponsiveGridLayout"
+			                    title="Change password"
+			                    labelSpanXL="4"
+			                    labelSpanL="4"
+			                    labelSpanM="12"
+			                    labelSpanS="12"
+			                    adjustLabelSpan="false"
+			                    emptySpanXL="0"
+			                    emptySpanL="0"
+			                    emptySpanM="0"
+			                    emptySpanS="0"
+			                    columnsXL="2"
+			                    columnsL="2"
+			                    columnsM="2"
+			                    singleContainerFullSize="false">
+				      <f:content>
+                    <Label text="Old password" />
+                    <Input value="" type="Text" submit=""
+                      editable="true">
+                    </Input>
+                    <Label text="New password" />
+                    <Input value="" type="Text" submit=""
+                      editable="true">
+                    </Input>
+                    <Label text="Confirm password" />
+                    <Input value="" type="Text" submit=""
+                      editable="true">
+                    </Input>
+                    <Label text="" />
+                    <Button text="Change"
+                            press="onChangePwd"
+                            ariaDescribedBy="defaultButtonDescription genericButtonDescription">
+                      <layoutData>
+                        <l:GridData span="XL2 L3 M3 S4" />
+                      </layoutData>
+                    </Button>
+				      </f:content>
+			      </f:SimpleForm>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
 
 		<footer>
 			<Bar>
