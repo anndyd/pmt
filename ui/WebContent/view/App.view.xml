@@ -14,9 +14,7 @@
         <ToolbarSpacer/>
         <Title text="Password management"/>
         <ToolbarSpacer/>
-        <Label
-          text="Someone, Who">
-        </Label>
+        <Text id="userText" />
       </tnt:ToolHeader>
        <App id="idAppControl"/>
 </mvc:View>

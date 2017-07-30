@@ -3,9 +3,9 @@ sap.ui.define([
 		"sap/ui/model/json/JSONModel"
 	], function (BaseController, JSONModel) {
 		"use strict";
-		var userName = '<%= UserName %>';
+		var userName = '';
 		var login = function () {
-		    var url = "/srserver/user/active";
+		    var url = "/user/active";
 		    $.ajax({
 		        url: url,
 		        type: 'POST',
@@ -43,6 +43,18 @@ sap.ui.define([
 
 				// apply content density mode to root view
 				this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass());
+				
+			},
+			
+			onAfterRendering: function() {
+				// set data
+				login();
+//				var oModel = new JSONModel();
+//				oModel.setData({
+//					currentUser : userName
+//				});
+//				this.getView().setModel(oModel);
+				this.getView().byId("userText").setText("Current User [" + userName + "]");
 			}
 
 		});
