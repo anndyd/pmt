@@ -25,8 +25,8 @@
 			                    singleContainerFullSize="false">
 				      <f:content>
                     <Label text="" />
-                    <Button text="Reset"
-                            press="onReset"
+                    <Button id="reset" text="Reset"
+                            press="onPress"
                             ariaDescribedBy="defaultButtonDescription genericButtonDescription">
                       <layoutData>
                         <l:GridData span="XL2 L3 M3 S4" />
@@ -55,16 +55,16 @@
 			                    singleContainerFullSize="false">
 				      <f:content>
                     <Label text="" />
-                    <Button text="Lock"
-                            press="onLock"
+                    <Button id="lock" text="Lock"
+                            press="onPress"
                             ariaDescribedBy="defaultButtonDescription genericButtonDescription">
                       <layoutData>
                         <l:GridData span="XL2 L3 M3 S4" />
                       </layoutData>
                     </Button>
                     <Label text="" />
-                    <Button text="Unlock"
-                            press="onUnlock"
+                    <Button id="unlock" text="Unlock"
+                            press="onPress"
                             ariaDescribedBy="defaultButtonDescription genericButtonDescription">
                       <layoutData>
                         <l:GridData span="XL2 L3 M3 S4" />
@@ -92,21 +92,25 @@
 			                    columnsM="2"
 			                    singleContainerFullSize="false">
 				      <f:content>
-                    <Label text="Old password" />
-                    <Input value="" type="Text" submit=""
+                    <Label text="{i18n>opwd}" />
+                    <Input value="{origpwd}" type="Text" submit=""
                       editable="true">
                     </Input>
                     <Label text="New password" />
-                    <Input value="" type="Text" submit=""
+                    <Input id="newPassword" value="{newpwd}" type="Text" liveChange="onPasswordChange"
                       editable="true">
                     </Input>
                     <Label text="Confirm password" />
-                    <Input value="" type="Text" submit=""
+                    <Input id="confirmPassword" value="{confimpwd}" type="Text" liveChange="onPasswordChange"
                       editable="true">
                     </Input>
                     <Label text="" />
-                    <Button text="Change"
-                            press="onChangePwd"
+                    <FormattedText id="prompt" htmlText="{nm>HTML}"
+                      visible="false" enabled="false">
+                    </FormattedText>
+                    <Label text="" />
+                    <Button id="change" text="Change" enabled="false"
+                            press="onPress"
                             ariaDescribedBy="defaultButtonDescription genericButtonDescription">
                       <layoutData>
                         <l:GridData span="XL2 L3 M3 S4" />

@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.sap.it.pmt")
+@ComponentScan(basePackages = {"com.sap.it.pmt"})
 public class PmtConfiguration extends WebMvcConfigurerAdapter {
 	/**
      * Enable default view ("index.html") mapped under "/".

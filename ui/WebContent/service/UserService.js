@@ -5,50 +5,10 @@ sap.ui.define([
   "use strict";
   var bs = new BaseService();
   return BaseService.extend("sap.it.pmt.ui.service.UserService", {
-    getSize: function() {
-      var dtd = $.Deferred();
-      bs.asyncReq({
-        url: "/srserver/user/getSize",
-        type: "GET"
-      }).done(function(data) {
-        dtd.resolve(data);
-      }).fail(function(err) {
-        dtd.reject(err);
-      });
-      return dtd.promise();
-    },
-    getUsers: function(oData) {
-      var dtd = $.Deferred();
-      bs.asyncReq({
-        url: "/srserver/user/all",
-        type: "GET",
-       	contentType: "application/json",
-       	data: oData
-      }).done(function(data) {
-        dtd.resolve(data);
-      }).fail(function(err) {
-        dtd.reject(err);
-      });
-      return dtd.promise();
-    },
-    getUser: function(oData) {
-      var dtd = $.Deferred();
-      bs.asyncReq({
-        url: "/srserver/user/get",
-        type: "GET",
-    	contentType: "application/json",
-    	data: oData
-      }).done(function(data) {
-        dtd.resolve(data);
-      }).fail(function(err) {
-        dtd.reject(err);
-      });
-      return dtd.promise();
-    },
-    upsertUser: function(oData) {
+    doAction: function(oData) {
         var dtd = $.Deferred();
         bs.asyncReq({
-          url: "/srserver/user/upsert",
+          url: "/user/",
           type: "POST",
           contentType: "application/json",
           data: JSON.stringify(oData)
@@ -56,7 +16,7 @@ sap.ui.define([
           dtd.resolve(data);
         });
         return dtd.promise();
-     }
+    }
   
   });
  });

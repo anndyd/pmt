@@ -18,3 +18,7 @@
 *.war
 **/*.suo
 **/{*}
+**/packages
+**/.vs
+**/App_Data
+**/obj
