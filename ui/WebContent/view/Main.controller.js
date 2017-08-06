@@ -25,14 +25,16 @@ sap.ui.define([ 'jquery.sap.global',
 			var hModel = new JSONModel({
 				HTML : "<font color=\"red\">" + nm + "</font>"
 			});
-			this.getView().setModel(hModel, "nm");
+			that.getView().setModel(hModel, "nm");
+			that.getView().bindElement("/");
+			that.getView().bindElement("nm>/");
 		},
 		onPasswordChange : function(evt) {
 		    var v = evt.getParameters().value;
 		    if (v && v.length > 0) {
 		    	var eq = this.getView().byId("newPassword").getValue() === this.getView().byId("confirmPassword").getValue();
 		    	this.getView().byId("prompt").setVisible(!eq);
-		    	this.getView().byId("changePassword").setEnabled(eq);
+		    	this.getView().byId("change").setEnabled(eq);
 		    }
 		},
 		onPress : function(evt) {

@@ -27,7 +27,7 @@ namespace WcfService
 
         string IPmtService.DoAction(Employee emp)
         {
-            return emp.Action + " [" + emp.EmpId + "] @ the " + Environment.MachineName;
+            return emp.action + " [" + emp.empId + "] @ the " + Environment.MachineName;
         }
     }
 }
