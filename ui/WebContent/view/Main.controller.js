@@ -10,6 +10,8 @@ sap.ui.define([ 'jquery.sap.global',
 
 		onInit : function(oEvent) {
 			var that = this;
+			that._showFormFragment();
+			
 			var oModel = new JSONModel({
 				empId : util.sessionInfo.currentUser,
 				empFullname : "",
@@ -29,6 +31,13 @@ sap.ui.define([ 'jquery.sap.global',
 			that.getView().bindElement("/");
 			that.getView().bindElement("nm>/");
 		},
+		
+		onExit : function() {
+  		  if (this.oPageFragment) {
+  		    this.oPageFragment.destroy();
+  		  }
+		},
+		
 		onPasswordChange : function(evt) {
 		    var v = evt.getParameters().value;
 		    if (v && v.length > 0) {
@@ -49,7 +58,21 @@ sap.ui.define([ 'jquery.sap.global',
 								);
 					}
 			);
+		},
+		
+
+		_showFormFragment : function () {
+			var oPage = this.getView().byId("mainPage");
+			oPage.destroyContent();
+			util.sessionInfo.phone = "123";
+			if (util.sessionInfo.phone) {
+				this.oPageFragment = sap.ui.xmlfragment(this.getView().getId(), "sap.it.pmt.ui.view.fragment.PmtMain", this);
+			} else {
+				this.oPageFragment = sap.ui.xmlfragment(this.getView().getId(), "sap.it.pmt.ui.view.fragment.PmtNoPhone", this);
+			}
+			oPage.addContent(this.oPageFragment);
 		}
+
 	});
 
 });

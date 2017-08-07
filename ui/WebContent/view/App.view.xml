@@ -3,7 +3,6 @@
 		controllerName="sap.it.pmt.ui.view.App"
 		xmlns:mvc="sap.ui.core.mvc"
     xmlns:tnt="sap.tnt"
-		displayBlock="true"
 		busy="{appView>/busy}"
 		busyIndicatorDelay="{appView>/delay}"
 		xmlns="sap.m">
@@ -15,6 +14,7 @@
         <Title text="Password management"/>
         <ToolbarSpacer/>
         <Text id="userText" />
+        
       </tnt:ToolHeader>
        <App id="idAppControl"/>
 </mvc:View>
