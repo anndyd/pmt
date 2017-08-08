@@ -9,20 +9,20 @@
                           editable="true"
                           layout="ResponsiveGridLayout"
                           title="Reset password"
-                          >
+                          adjustLabelSpan="false">
               <f:content>
                     <Label text="{i18n>smsCode}" />
                     <Input value="{smsCode}" type="Text"
                       editable="true">
                       <layoutData>
-                        <l:GridData span="XL2 L3 M3 S4" />
+                        <l:GridData span="XL1 L2 M3 S4" />
                       </layoutData>
                     </Input>
                     <Button id="sms1" text="{i18n>smsButton}"
                             press="onPressSms"
                             ariaDescribedBy="defaultButtonDescription genericButtonDescription">
                       <layoutData>
-                        <l:GridData span="XL4 L6 M6 S8" />
+                        <l:GridData span="XL2 L4 M6 S8" />
                       </layoutData>
                     </Button>
                     <Label text="" />
@@ -30,7 +30,7 @@
                             press="onPress"
                             ariaDescribedBy="defaultButtonDescription genericButtonDescription">
                       <layoutData>
-                        <l:GridData span="XL2 L3 M3 S4" />
+                        <l:GridData span="XL1 L2 M3 S4" />
                       </layoutData>
                     </Button>
               </f:content>
@@ -41,20 +41,20 @@
                           editable="true"
                           layout="ResponsiveGridLayout"
                           title="Lock/Unlock password"
-                          >
+                          adjustLabelSpan="false">
               <f:content>
                     <Label text="{i18n>smsCode}" />
                     <Input value="{smsCode}" type="Text"
                       editable="true">
                       <layoutData>
-                        <l:GridData span="XL2 L3 M3 S4" />
+                        <l:GridData span="XL1 L2 M3 S4" />
                       </layoutData>
                     </Input>
                     <Button id="sms2" text="{i18n>smsButton}"
                             press="onPressSms"
                             ariaDescribedBy="defaultButtonDescription genericButtonDescription">
                       <layoutData>
-                        <l:GridData span="XL4 L6 M6 S8" />
+                        <l:GridData span="XL2 L4 M6 S8" />
                       </layoutData>
                     </Button>
                     <Label text="" />
@@ -62,7 +62,7 @@
                             press="onPress"
                             ariaDescribedBy="defaultButtonDescription genericButtonDescription">
                       <layoutData>
-                        <l:GridData span="XL2 L3 M3 S4" />
+                        <l:GridData span="XL1 L2 M3 S4" />
                       </layoutData>
                     </Button>
                     <Label text="" />
@@ -70,7 +70,7 @@
                             press="onPress"
                             ariaDescribedBy="defaultButtonDescription genericButtonDescription">
                       <layoutData>
-                        <l:GridData span="XL2 L3 M3 S4" />
+                        <l:GridData span="XL1 L2 M3 S4" />
                       </layoutData>
                     </Button>
               </f:content>
@@ -81,19 +81,28 @@
                           editable="true"
                           layout="ResponsiveGridLayout"
                           title="Change password"
-                          >
+                          adjustLabelSpan="false">
               <f:content>
                     <Label text="{i18n>opwd}" />
                     <Input value="{origpwd}" type="Text" submit=""
                       editable="true">
+                      <layoutData>
+                        <l:GridData span="XL3 L6 M9 S12" />
+                      </layoutData>
                     </Input>
                     <Label text="New password" />
                     <Input id="newPassword" value="{newpwd}" type="Text" liveChange="onPasswordChange"
                       editable="true">
+                      <layoutData>
+                        <l:GridData span="XL3 L6 M9 S12" />
+                      </layoutData>
                     </Input>
                     <Label text="Confirm password" />
                     <Input id="confirmPassword" value="{confimpwd}" type="Text" liveChange="onPasswordChange"
                       editable="true">
+                      <layoutData>
+                        <l:GridData span="XL3 L6 M9 S12" />
+                      </layoutData>
                     </Input>
                     <Label text="" />
                     <FormattedText id="prompt" htmlText="{i18n>nonMatch}"
@@ -103,14 +112,14 @@
                     <Input value="{smsCode}" type="Text"
                       editable="true">
                       <layoutData>
-                        <l:GridData span="XL2 L3 M3 S4" />
+                        <l:GridData span="XL1 L2 M3 S4" />
                       </layoutData>
                     </Input>
                     <Button id="sms3" text="{i18n>smsButton}"
                             press="onPressSms"
                             ariaDescribedBy="defaultButtonDescription genericButtonDescription">
                       <layoutData>
-                        <l:GridData span="XL4 L6 M6 S8" />
+                        <l:GridData span="XL2 L4 M6 S8" />
                       </layoutData>
                     </Button>
                     <Label text="" />
