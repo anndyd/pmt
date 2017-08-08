@@ -6,6 +6,7 @@ sap.ui.define([ 'jquery.sap.global',
 		BaseController, UserService, MessageToast, JSONModel) {
 	"use strict";
 	var us = new UserService();
+	var txtInterval;
 	return BaseController.extend("sap.it.pmt.ui.view.Main", {
 
 		onInit : function(oEvent) {
@@ -22,7 +23,7 @@ sap.ui.define([ 'jquery.sap.global',
 			});
 			
 			that.getView().setModel(oModel);
-			var nm = that.getOwnerComponent().getModel("i18n").getResourceBundle().getText("nonMatch")
+			var nm = that.getResourceBundle().getText("nonMatch");
 			
 			var hModel = new JSONModel({
 				HTML : "<font color=\"red\">" + nm + "</font>"
@@ -47,6 +48,9 @@ sap.ui.define([ 'jquery.sap.global',
 		    }
 		},
 		onPress : function(evt) {
+//			if (txtInterval) {
+//				clearInterval(txtInterval);
+//			}
 			var that = this;
 			var param = that.getView().getModel().getData();
 			param.action = evt.getSource().getId().match("((?!-).)+$")[0];
@@ -58,6 +62,32 @@ sap.ui.define([ 'jquery.sap.global',
 								);
 					}
 			);
+		},
+		onPressSms : function(evt) {
+			var btn1 = this.getView().byId("sms1");
+			var btn2 = this.getView().byId("sms2");
+			var btn3 = this.getView().byId("sms3");
+			btn1.setEnabled(false);
+			btn2.setEnabled(false);
+			btn3.setEnabled(false);
+			var txtL = this.getResourceBundle().getText("smsLiveText");
+			var txtB = this.getResourceBundle().getText("smsButton");
+			var i = 10;
+			txtInterval = setInterval(function(){
+				i--;
+				btn1.setText(String.format(txtL, i));
+				btn2.setText(String.format(txtL, i));
+				btn3.setText(String.format(txtL, i));
+				if (i<=0) {
+					btn1.setEnabled(true);
+					btn1.setText(txtB);
+					btn2.setEnabled(true);
+					btn2.setText(txtB);
+					btn3.setEnabled(true);
+					btn3.setText(txtB);
+					clearInterval(txtInterval);
+				}
+			}, 1000);
 		},
 		
 

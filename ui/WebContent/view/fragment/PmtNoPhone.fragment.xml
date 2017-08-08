@@ -1,0 +1,11 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+  <MessagePage
+      id="page"
+      showFooter="false" showHeader="false"
+      text="{i18n>noPhoneText}"
+      icon="{sap-icon://employee-rejections}"
+      description="{i18n>noPhoneDesc}"
+      >
+  </MessagePage>
+
+</core:FragmentDefinition>

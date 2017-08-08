@@ -1,0 +1,130 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core"
+  xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+      <IconTabBar id="iconTabBar"
+            expanded="true"
+            class="sapUiNoContentPadding">
+        <items>
+          <IconTabFilter icon="sap-icon://reset" key="info" text="Reset" tooltip="Reset password.">
+            <f:SimpleForm id="userForm1"
+                          editable="true"
+                          layout="ResponsiveGridLayout"
+                          title="Reset password"
+                          >
+              <f:content>
+                    <Label text="{i18n>smsCode}" />
+                    <Input value="{smsCode}" type="Text"
+                      editable="true">
+                      <layoutData>
+                        <l:GridData span="XL2 L3 M3 S4" />
+                      </layoutData>
+                    </Input>
+                    <Button id="sms1" text="{i18n>smsButton}"
+                            press="onPressSms"
+                            ariaDescribedBy="defaultButtonDescription genericButtonDescription">
+                      <layoutData>
+                        <l:GridData span="XL4 L6 M6 S8" />
+                      </layoutData>
+                    </Button>
+                    <Label text="" />
+                    <Button id="reset" text="Reset"
+                            press="onPress"
+                            ariaDescribedBy="defaultButtonDescription genericButtonDescription">
+                      <layoutData>
+                        <l:GridData span="XL2 L3 M3 S4" />
+                      </layoutData>
+                    </Button>
+              </f:content>
+            </f:SimpleForm>
+          </IconTabFilter>
+          <IconTabFilter icon="sap-icon://private" key="info" text="Lock/Unlock" tooltip="Lock or Unlock password.">
+            <f:SimpleForm id="userForm2"
+                          editable="true"
+                          layout="ResponsiveGridLayout"
+                          title="Lock/Unlock password"
+                          >
+              <f:content>
+                    <Label text="{i18n>smsCode}" />
+                    <Input value="{smsCode}" type="Text"
+                      editable="true">
+                      <layoutData>
+                        <l:GridData span="XL2 L3 M3 S4" />
+                      </layoutData>
+                    </Input>
+                    <Button id="sms2" text="{i18n>smsButton}"
+                            press="onPressSms"
+                            ariaDescribedBy="defaultButtonDescription genericButtonDescription">
+                      <layoutData>
+                        <l:GridData span="XL4 L6 M6 S8" />
+                      </layoutData>
+                    </Button>
+                    <Label text="" />
+                    <Button id="lock" text="Lock"
+                            press="onPress"
+                            ariaDescribedBy="defaultButtonDescription genericButtonDescription">
+                      <layoutData>
+                        <l:GridData span="XL2 L3 M3 S4" />
+                      </layoutData>
+                    </Button>
+                    <Label text="" />
+                    <Button id="unlock" text="Unlock"
+                            press="onPress"
+                            ariaDescribedBy="defaultButtonDescription genericButtonDescription">
+                      <layoutData>
+                        <l:GridData span="XL2 L3 M3 S4" />
+                      </layoutData>
+                    </Button>
+              </f:content>
+            </f:SimpleForm>
+          </IconTabFilter>
+          <IconTabFilter icon="sap-icon://request" key="statistics" text="Change" tooltip="Change password.">
+            <f:SimpleForm id="userForm3"
+                          editable="true"
+                          layout="ResponsiveGridLayout"
+                          title="Change password"
+                          >
+              <f:content>
+                    <Label text="{i18n>opwd}" />
+                    <Input value="{origpwd}" type="Text" submit=""
+                      editable="true">
+                    </Input>
+                    <Label text="New password" />
+                    <Input id="newPassword" value="{newpwd}" type="Text" liveChange="onPasswordChange"
+                      editable="true">
+                    </Input>
+                    <Label text="Confirm password" />
+                    <Input id="confirmPassword" value="{confimpwd}" type="Text" liveChange="onPasswordChange"
+                      editable="true">
+                    </Input>
+                    <Label text="" />
+                    <FormattedText id="prompt" htmlText="{i18n>nonMatch}"
+                      visible="false" enabled="false">
+                    </FormattedText>
+                    <Label text="{i18n>smsCode}" />
+                    <Input value="{smsCode}" type="Text"
+                      editable="true">
+                      <layoutData>
+                        <l:GridData span="XL2 L3 M3 S4" />
+                      </layoutData>
+                    </Input>
+                    <Button id="sms3" text="{i18n>smsButton}"
+                            press="onPressSms"
+                            ariaDescribedBy="defaultButtonDescription genericButtonDescription">
+                      <layoutData>
+                        <l:GridData span="XL4 L6 M6 S8" />
+                      </layoutData>
+                    </Button>
+                    <Label text="" />
+                    <Button id="change" text="Change" enabled="false"
+                            press="onPress"
+                            ariaDescribedBy="defaultButtonDescription genericButtonDescription">
+                      <layoutData>
+                        <l:GridData span="XL2 L3 M3 S4" />
+                      </layoutData>
+                    </Button>
+              </f:content>
+            </f:SimpleForm>
+          </IconTabFilter>
+        </items>
+      </IconTabBar>
+
+</core:FragmentDefinition>
