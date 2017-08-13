@@ -29,8 +29,8 @@ namespace ConsoleApp
                 // create search object which operates on LDAP connection object  
                 // and set search object to only find the user specified  
                 DirectorySearcher search = new DirectorySearcher(myLdapConnection);
-                //search.Filter = "(cn=" + username + ")";
-                search.Filter = "(&(objectClass=user)(sAMAccountName=" + username + "))"; // result same as above.
+                search.Filter = "(cn=" + username + ")";
+                //search.Filter = "(&(objectClass=user)(sAMAccountName=" + username + "))"; // result same as above.
                 // create results objects from search object  
                 SearchResult result = search.FindOne();
                 if (result != null)
@@ -38,7 +38,7 @@ namespace ConsoleApp
                     // user exists, cycle through LDAP fields (cn, telephonenumber etc.)  
                     ResultPropertyCollection fields = result.Properties;
 
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\work\it\tmp\testad1.txt"))
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"E:\work\it\tmp\testad.txt"))
                     {
                         foreach (String ldapField in fields.PropertyNames)
                         {
