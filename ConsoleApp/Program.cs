@@ -17,8 +17,21 @@ namespace ConsoleApp
 {
     class Program
     {
+        private static Random random = new Random();
+        public static string RandomString(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
         static void Main(string[] args)
         {
+            string pwd = RandomString(8);
+            Console.Write(pwd);
+        }
+
+        private static void getUserInfo() { 
             Console.Write("Enter user: ");
             String username = Console.ReadLine();
             //***** System.DirectoryServices Examples ************/

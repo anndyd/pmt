@@ -16,12 +16,17 @@ namespace WcfService
         void DoWork();
 
         [OperationContract]
-        [WebInvoke(BodyStyle = WebMessageBodyStyle.Wrapped, Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "health")]
+        [WebInvoke(BodyStyle = WebMessageBodyStyle.Wrapped, Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "/health")]
         string Health();
 
         [OperationContract]
         [WebInvoke(BodyStyle = WebMessageBodyStyle.Bare, Method = "POST",
-            RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, UriTemplate = "")]
+            RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, UriTemplate = "/")]
         string DoAction(Employee emp);
+
+        [OperationContract]
+        [WebInvoke(BodyStyle = WebMessageBodyStyle.Bare, Method = "GET",
+            ResponseFormat = WebMessageFormat.Json, UriTemplate = "/getEmpInfo/{empId}")]
+        Employee GetEmpInfo(string empId);
     }
 }
