@@ -7,7 +7,7 @@ public class Employee implements Serializable {
 
 	private String empId;
 	private String empFullname;
-	private String phone;
+	private String mobile;
 	private String smsCode;
 	private String oldPassword;
 	private String newPassword;
@@ -25,13 +25,13 @@ public class Employee implements Serializable {
 	public void setEmpFullname(String empFullname) {
 		this.empFullname = empFullname;
 	}
-	public String getPhone() {
-		return phone;
-	}
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-	public String getSmsCode() {
+	public String getMobile() {
+        return mobile;
+    }
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+    public String getSmsCode() {
 		return smsCode;
 	}
 	public void setSmsCode(String smsCode) {

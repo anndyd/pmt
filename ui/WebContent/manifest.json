@@ -87,14 +87,17 @@
 			"routes": [
         {
             "pattern": "",
-            "name": "main",
-            "target": "main"
+            "name": "login",
+            "target": "login"
 				}
 			],
 
 			"targets": {
 				"main": {
 					"viewName": "Main"
+				},
+				"login": {
+					"viewName": "Login"
 				}
 			}
 		}

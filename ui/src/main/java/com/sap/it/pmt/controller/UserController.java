@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sap.it.pmt.dto.SessionInfo;
 import com.sap.it.pmt.entity.Employee;
-import com.sap.it.pmt.entity.User;
 import com.sap.it.pmt.util.RestClientHelper;
 import com.sap.it.pmt.util.SessionHolder;
 
@@ -26,7 +25,7 @@ import com.sap.it.pmt.util.SessionHolder;
 @Scope("request")
 public class UserController {
 	private static final Logger LOGGER = Logger.getLogger(UserController.class);
-	private RestClientHelper restClient = new RestClientHelper();
+	private final RestClientHelper restClient = new RestClientHelper();
 	
 	@RequestMapping(value="/health", method = RequestMethod.GET)
 	@ResponseBody
@@ -48,13 +47,37 @@ public class UserController {
 
     @RequestMapping(value = "/active", method = RequestMethod.POST)
     @ResponseBody
-    public SessionInfo active(HttpServletRequest req) {
+    public SessionInfo active(HttpServletRequest req, @RequestBody String empId) {
     	SessionInfo rlt = new SessionInfo();
+		String usrId = "";
+		String usrFullName = "";
+		String usrRole = "";
+    	Employee emp = restClient.execute("getEmpInfo/" + empId, HttpMethod.GET, null, Employee.class);
+    	if (null == emp) {
+    	    rlt.setError("Can't get your information!");
+    	} else {
+    	    usrId = emp.getEmpId();
+    		usrFullName = emp.getEmpFullname();
+    		rlt.setUserFullName(usrFullName != null && usrFullName.length() > 0 ? 
+    				usrId + " (" + usrFullName + ")" : usrId);
+    		rlt.setCurrentUser(usrId);
+    		rlt.setMobile(emp.getMobile());
+    
+    		req.getSession().setAttribute(SessionHolder.USER_ID, usrId);
+            req.getSession().setAttribute(SessionHolder.USER_FULLNAME, usrFullName);
+    	}
+        SessionHolder.setContext(usrId, usrFullName, usrRole);
+        
+        return rlt;
+    }
+    
+    private String getEmpIdFromCert(HttpServletRequest req) {
+        String rlt = "";
     	// Get the client SSL certificates associated with the request
 		X509Certificate[] certs = (X509Certificate[]) req.getAttribute("javax.servlet.request.X509Certificate");
 		// Check that a certificate was obtained
 		if (null == certs || certs.length < 1) {
-			rlt.setError("SSL not client authenticated");
+			rlt = "SSL not client authenticated";
 			return rlt;
 		}
 		// The base of the certificate chain contains the client's info
@@ -66,34 +89,16 @@ public class UserController {
 
 		// Extract the common name (CN)
 		int start = principal.getName().indexOf("CN");
-		String usrId = null;
-		String usrFullName = "";
-		String usrRole = "";
 		String tmpName = "";
 		if (start > -1) {
 			tmpName = principal.getName().substring(start + 3);
 			int end = tmpName.indexOf(",");
 			if (end > 0) {
-				usrId = tmpName.substring(0, end);
+				rlt = tmpName.substring(0, end);
 			} else {
-				usrId = tmpName;
+				rlt = tmpName;
 			}
 		}
-		User usr = new User();
-		if (usr != null /*&& usr.getStatus()*/) {
-    		usrFullName = usr.getFullName();
-    		usrRole = usr.getRole();
-    		rlt.setUserFullName(usrFullName != null && usrFullName.length() > 0 ? 
-    				usrId + " (" + usrFullName + ")" : usrId);
-    		rlt.setCurrentUser(usrId);
-    		rlt.setRole(usrRole);
-    	}
-        req.getSession().setAttribute(SessionHolder.USER_ID, usrId);
-        req.getSession().setAttribute(SessionHolder.USER_FULLNAME, usrFullName);
-        req.getSession().setAttribute(SessionHolder.USER_ROLE, usrRole);
-
-        SessionHolder.setContext(usrId, usrFullName, usrRole);
-        
         return rlt;
     }
 

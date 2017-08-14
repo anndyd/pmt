@@ -119,6 +119,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="log4net.config" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\wcfService.pubxml" />
     <None Include="Properties\PublishProfiles\WDto10.128.240.116.pubxml" />
     <None Include="Web.Debug.config">

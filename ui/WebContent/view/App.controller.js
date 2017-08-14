@@ -3,23 +3,6 @@ sap.ui.define([
 		"sap/ui/model/json/JSONModel"
 	], function (BaseController, JSONModel) {
 		"use strict";
-		var userName = '';
-		var login = function () {
-		    var url = "/user/active";
-		    $.ajax({
-		        url: url,
-		        type: 'POST',
-		        async: false
-		    }).done(function (data) {
-		        if (data && !data.error) {
-		            util.sessionInfo = data;
-		            userName = util.sessionInfo.userFullName;
-		        } else {
-		            alert("You don't have permission to access!", { styleClass: "srMessageBoxStyle srMessageBoxError" });
-		        }
-		    });
-		};
-
 		return BaseController.extend("sap.it.pmt.ui.view.App", {
 
 			onInit : function () {
@@ -47,14 +30,7 @@ sap.ui.define([
 			},
 			
 			onAfterRendering: function() {
-				// set data
-				login();
-//				var oModel = new JSONModel();
-//				oModel.setData({
-//					currentUser : userName
-//				});
-//				this.getView().setModel(oModel);
-				this.getView().byId("userText").setText("Current User [" + userName + "]");
+				this.getView().byId("userText").setText("Current User [" + util.sessionInfo.userFullName + "]");
 			}
 
 		});

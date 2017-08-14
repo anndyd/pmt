@@ -3,6 +3,7 @@ package com.sap.it.pmt.dto;
 public class SessionInfo {
 	private String role;
 	private String currentUser;
+	private String mobile;
 	private String userFullName;
 	private String error;
 	
@@ -18,7 +19,13 @@ public class SessionInfo {
 	public void setCurrentUser(String currentUser) {
 		this.currentUser = currentUser;
 	}
-	public String getUserFullName() {
+	public String getMobile() {
+        return mobile;
+    }
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+    public String getUserFullName() {
 		return userFullName;
 	}
 	public void setUserFullName(String userFullName) {

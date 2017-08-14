@@ -16,6 +16,18 @@ sap.ui.define([
           dtd.resolve(data);
         });
         return dtd.promise();
+    },
+    login: function (oData) {
+        var dtd = $.Deferred();
+        bs.asyncReq({
+          url: "/user/active",
+          type: "POST",
+          contentType: "text/plain",
+          data: oData
+        }).done(function(data) {
+          dtd.resolve(data);
+        });
+        return dtd.promise();
     }
   
   });

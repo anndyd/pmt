@@ -94,8 +94,8 @@ sap.ui.define([ 'jquery.sap.global',
 		_showFormFragment : function () {
 			var oPage = this.getView().byId("mainPage");
 			oPage.destroyContent();
-			util.sessionInfo.phone = "123";
-			if (util.sessionInfo.phone) {
+			util.sessionInfo.mobile = "123";
+			if (util.sessionInfo.mobile) {
 				this.oPageFragment = sap.ui.xmlfragment(this.getView().getId(), "sap.it.pmt.ui.view.fragment.PmtMain", this);
 			} else {
 				this.oPageFragment = sap.ui.xmlfragment(this.getView().getId(), "sap.it.pmt.ui.view.fragment.PmtNoPhone", this);
